@@ -1,0 +1,141 @@
+@media (max-width: 640px) {
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		}
+	input {
+		display: none;
+		}
+	nav {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: pink;
+		overflow-x: hidden;
+		}
+	nav ul {
+		position: absolute;
+		top: 0;
+		left: 100vw;
+		width: 100vw;
+		height: 100vh;
+		display: block;
+		margin: 0;
+		padding: 0;
+		}
+	nav li {
+		display: block;
+		margin: 0;
+		padding: 0;
+		width: 100vw;
+		height: 2rem;
+		}
+	nav label a {
+		pointer-events: none;
+		}
+	nav label {
+		cursor: pointer;
+		width: 100vw;
+		display: block;
+		top: 0;
+		left: 100vw;
+		z-index: 42;
+		}
+	nav a {
+		display: block;
+		height: 2em;
+		}
+	label:hover {
+		background: white;
+		}
+	a:hover {
+		background: lightBlue;
+		}
+	nav > ul {
+		top: 0;
+		left: 0;
+		}
+	nav > ul ul {
+		padding-top: 2em;
+		}
+	nav > ul > li {
+		background: red;
+		}
+	nav li li {
+		background: green;
+		}
+	input ~ ul {
+		-webkit-transition: left .3s ease;
+		transition: left .3s ease;
+		}
+	input:checked ~ ul {
+		padding-top: 2em;
+		-webkit-transition: left .3s ease;
+		transition: left .3s ease;
+		}
+	input:checked ~ ul {
+		left: 0;
+		}
+	nav > input:checked ~ ul {
+		left: -100vw;
+		}
+	input:checked ~ label {
+		position: fixed;
+		left: 0;
+		background: silver;
+		-webkit-transition: left .3s ease;
+		transition: left .3s ease;
+		}
+	}
+@media (min-width: 640px) {
+	input{
+		display:none;
+		}
+	ul,
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		}
+	nav {
+		background: yellow;
+		}
+	a {
+		display: inline-block;
+		line-height: 2;
+		padding: 0.5rem 1rem;
+		margin: 0;
+		}
+	a:hover {
+		background: white;
+		}
+	li {
+		display: inline-block;
+		}
+	ul {
+		position: relative;
+		display: inline-block;
+		}
+	ul ul {
+		position: absolute;
+		display: none;
+		width: 10rem;
+		}
+	nav:not(.touched) label:hover,
+	.submenu-toggle:checked ~ label a{
+		background: white;
+		}
+	nav:not(.touched) label:hover ~ ul,
+	.submenu-toggle:checked ~ ul {
+		display: block;
+		}
+
+	nav.touched > ul > li > label a {
+		pointer-events: none;
+		}
+
+	}
+
