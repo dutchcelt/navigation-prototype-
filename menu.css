@@ -1,6 +1,5 @@
 :root {
 	--h: 2rem;
-	--vh: calc( 100vh - var(-h) );
 	}
 
 @media (max-width: 640px) {
@@ -17,7 +16,7 @@
 		top: 0;
 		left: 100vw;
 		width: 100vw;
-		height: var(--vh);
+		height: 100%;
 		display: block;
 		margin: 0;
 		padding: 0;
@@ -70,7 +69,6 @@
 		}
 	.menu [aria-haspopup] > input:checked ~ ul {
 		padding-top: var(--h);
-		-webkit-transition: left .3s ease;
 		transition: left .3s ease;
 		left: 0;
 		background: white;
