@@ -1,3 +1,8 @@
+:root {
+	--h: 2rem;
+	--vh: calc( 100vh - var(-h) );
+	}
+
 @media (max-width: 640px) {
 	* {
 		box-sizing: border-box;
@@ -7,82 +12,73 @@
 	input {
 		display: none;
 		}
-	nav {
-		position: relative;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		background: pink;
-		overflow-x: hidden;
-		}
-	nav ul {
+	.menu ul {
 		position: absolute;
 		top: 0;
 		left: 100vw;
 		width: 100vw;
-		height: 100vh;
+		height: var(--vh);
 		display: block;
 		margin: 0;
 		padding: 0;
+		background: white;
 		}
-	nav li {
+	.menu li {
 		display: block;
 		margin: 0;
 		padding: 0;
 		width: 100vw;
-		height: 2rem;
+		height: var(--h);
 		}
-	nav label a {
+	.menu label a {
 		pointer-events: none;
 		}
-	nav label {
+	.menu label {
 		cursor: pointer;
 		width: 100vw;
 		display: block;
-		top: 0;
+		top: var(--h);
 		left: 100vw;
 		z-index: 42;
 		}
-	nav a {
+	.menu a {
 		display: block;
-		height: 2em;
+		height: var(--h);
 		}
-	label:hover {
+	.menu label:hover {
 		background: white;
 		}
-	a:hover {
+	.menu a:hover {
 		background: lightBlue;
 		}
-	nav > ul {
+	.menu > ul {
 		top: 0;
 		left: 0;
 		}
-	nav > ul ul {
-		padding-top: 2em;
+	.menu > ul ul {
+		padding-top: var(--h);
 		}
-	nav > ul > li {
+	.menu > ul > li {
 		background: red;
 		}
-	nav li li {
+	.menu li li {
 		background: green;
 		}
-	input ~ ul {
+	.menu input ~ ul {
 		-webkit-transition: left .3s ease;
 		transition: left .3s ease;
 		}
-	input:checked ~ ul {
-		padding-top: 2em;
+	.menu [aria-haspopup] > input:checked ~ ul {
+		padding-top: var(--h);
 		-webkit-transition: left .3s ease;
 		transition: left .3s ease;
-		}
-	input:checked ~ ul {
 		left: 0;
+		background: white;
 		}
-	nav > input:checked ~ ul {
+	.menu > li > input:checked ~ ul {
 		left: -100vw;
 		}
-	input:checked ~ label {
+	.menu input:checked ~ label {
 		position: fixed;
 		left: 0;
 		background: silver;
@@ -90,6 +86,35 @@
 		transition: left .3s ease;
 		}
 	}
+.navigation-content .menu {
+	position: absolute;
+	top: var(--h);
+	left: 0;
+	height: calc( 100% - var( --h ) );
+	background: pink;
+	overflow-x: hidden;
+	transition: height .1s ease;
+	}
+
+.navigation-content [for=navigation-content-toggle] {
+	position : fixed;
+	top :0;
+	left :0;
+	width: 100vw;
+	height: var(--h);
+	}
+
+#navigation-content-toggle:checked ~ .menu {
+	height: 0;
+	overflow : hidden;
+	transition: height .1s ease;
+
+	}
+#navigation-content-toggle:checked ~ .menu label {
+	position : static;
+
+	}
+
 @media (min-width: 640px) {
 	input{
 		display:none;
