@@ -1,13 +1,13 @@
 :root {
 	--h: 2rem;
 	}
-
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	--vh: calc( 100% - var(--h) );
+	}
 @media (max-width: 640px) {
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-		}
 	input {
 		display: none;
 		}
@@ -20,6 +20,7 @@
 		display: block;
 		margin: 0;
 		padding: 0;
+		padding-top: var( -h );
 		background: white;
 		}
 	.menu li {
@@ -50,15 +51,12 @@
 	.menu a:hover {
 		background: lightBlue;
 		}
-	.menu > ul {
+	.menu {
 		top: 0;
 		left: 0;
 		}
-	.menu > ul ul {
+	.menu > li > ul ul {
 		padding-top: var(--h);
-		}
-	.menu > ul > li {
-		background: red;
 		}
 	.menu li li {
 		background: green;
@@ -67,16 +65,13 @@
 		-webkit-transition: left .3s ease;
 		transition: left .3s ease;
 		}
-	.menu [aria-haspopup] > input:checked ~ ul {
+	.menu :checked ~ ul {
 		padding-top: var(--h);
 		transition: left .3s ease;
 		left: 0;
 		background: white;
 		}
-	.menu > li > input:checked ~ ul {
-		left: -100vw;
-		}
-	.menu input:checked ~ label {
+	.menu :checked ~ label {
 		position: fixed;
 		left: 0;
 		background: silver;
@@ -88,7 +83,7 @@
 	position: absolute;
 	top: var(--h);
 	left: 0;
-	height: calc( 100% - var( --h ) );
+	height: var( --vh );
 	background: pink;
 	overflow-x: hidden;
 	transition: height .1s ease;
