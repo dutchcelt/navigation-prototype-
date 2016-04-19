@@ -154,6 +154,33 @@
 	nav.touched > ul > li > label a {
 		pointer-events: none;
 		}
+	/* LESSCSS BLOCK */
+	nav > ul > [aria-haspopup]{
+		& > label ~ ul{
+			opacity: 0;
+			transition: opacity 0.3s ease-out;
+			pointer-events: none;
+			box-shadow: 0 0 3px silver;
+		}
+		& > label a{
+			background: transparent;
+ 			transition: background 0.3s ease-in-out;			
+		}
+		&:hover > label a,
+		& > :checked ~ label a{
+			background: white;
+		}
+
+		&:hover > label ~ ul,
+		& > :checked ~ label ~ ul{
+			opacity: 1;
+			pointer-events: initial;
+			display: block;
+			transition: opacity 0.6s ease-in;
+		}
+	}
+
+
 
 	}
 
